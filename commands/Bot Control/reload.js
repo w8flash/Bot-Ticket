@@ -9,7 +9,7 @@ module.exports.run = async (client, message) => {
 
   const embedsucces = new MessageEmbed()
     .setColor(defaults.vcolor)
-    .setDescription(`${defaults.succes} Unreal en ligne`)
+    .setDescription(`${defaults.succes} RDCSupport en ligne`)
   setTimeout(() => {
   msg.edit({ embeds: [embedsucces] });
     setTimeout(() => {

@@ -18,40 +18,16 @@ module.exports.run = async (client, message, args) => {
         .setPlaceholder('Choisissez un module')
         .addOptions([
           {
-            label: 'Modération',
-            value: 'moderation',
-            description: 'Liste des commandes de modération',
-            emoji: '<a:mod:881186858552418334>',
+            label: 'Utilitaire',
+            value: 'utilitaire',
+            description: 'Liste des commandes utilitaire',
+            emoji: '<a:utilitaire:898489655891206154>',
           },
           {
-            label: 'Modération Settings',
-            value: 'modsettings',
-            description: 'Liste des commandes de paramétrage de modération',
-            emoji: '<:settings:881184514947289188> ',
-          },
-          {
-            label: 'Logs',
-            value: 'logs',
-            description: 'Liste des commandes de logs',
-            emoji: '<a:logs:898489655362715688> ',
-          },
-          {
-            label: 'Server Config',
-            value: 'srvconfig',
-            description: 'Liste des commandes de configuration du serveur',
+            label: 'Bot Config',
+            value: 'botconfig',
+            description: 'Liste des commandes de configuration du bot',
             emoji: '<:srvconfig:898489788968108032>',
-          },
-          {
-            label: 'Server Gestion',
-            value: 'servergestion',
-            description: 'Liste des commandes de gestion du serveur',
-            emoji: '<a:srvgestion:898489655719231518> ',
-          },
-          {
-            label: 'Antiraid',
-            value: 'antiraid',
-            description: 'Liste des commandes de la sécurité Antiraid',
-            emoji: '<a:warning:892466586802335835> ',
           },
           {
             label: 'Bot Control',
@@ -60,10 +36,10 @@ module.exports.run = async (client, message, args) => {
             emoji: '<a:bot:880794764579078154> ',
           },
           {
-            label: 'Utilitaire',
-            value: 'utilitaire',
-            description: 'Liste des commandes utilitaire',
-            emoji: '<a:utilitaire:898489655891206154>',
+            label: 'Logs',
+            value: 'logs',
+            description: 'Liste des commandes de logs',
+            emoji: '<a:logs:898489655362715688> ',
           },
         ])
     );
@@ -72,14 +48,10 @@ module.exports.run = async (client, message, args) => {
     .setColor(defaults.dcolor)
     .setTitle(`Help Commandes Modules [\`${categoryList.length}\`]`)
     .addFields(
-      { name: '<a:mod:881186858552418334> Modération', value: `\`${client.commands.filter(cat => cat.help.category === "moderation").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
-      { name: '<:settings:881184514947289188> Modération Settings', value: `\`${client.commands.filter(cat => cat.help.category === "modsettings").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
-      { name: '<a:logs:898489655362715688> Logs', value: `\`${client.commands.filter(cat => cat.help.category === "logs").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
-      { name: '<:srvconfig:898489788968108032> Serveur Config', value: `\`${client.commands.filter(cat => cat.help.category === "serveurconfig").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
-      { name: '<a:srvgestion:898489655719231518> Serveur Gestion', value: `\`${client.commands.filter(cat => cat.help.category === "servergestion").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
-      { name: '<a:warning:892466586802335835> Antiraid', value: `\`${client.commands.filter(cat => cat.help.category === "antiraid").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
+      { name: '<a:utilitaire:898489655891206154> Utilitaire', value: `\`${client.commands.filter(cat => cat.help.category === "utilitaire").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
+      { name: '<:srvconfig:898489788968108032> Bot Config', value: `\`${client.commands.filter(cat => cat.help.category === "botconfig").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
       { name: '<a:bot:880794764579078154> Bot Control', value: `\`${client.commands.filter(cat => cat.help.category === "botcontrol").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
-      { name: '<a:utilitaire:898489655891206154> Utilitaire', value: `\`${client.commands.filter(cat => cat.help.category === "information").map(cmd => cmd.help.name).length}\` commandes`, inline: true},
+      { name: '<a:logs:898489655362715688> Logs', value: `\`${client.commands.filter(cat => cat.help.category === "logs").map(cmd => cmd.help.name).length}\` commandes`, inline: true}
     )
 
   const msg = await message.channel.send({ embeds:[embeds], components: [row]});
@@ -91,78 +63,26 @@ module.exports.run = async (client, message, args) => {
 
   collector.on('collect', async(collected) => {
     const value = collected.values;
-    //console.log(value);
-    /*switch(value) {
-      case "first":
-        console.log("first option")
-      break;
-      case "second":
-        console.log("second option")
-      break;
-      case "third":
-        console.log("third option")
-      break;
-    }*/
-    const moderation = new MessageEmbed()
+    const utilitaire = new MessageEmbed()
       .setColor(defaults.dcolor)
-      .setTitle("Modération")
+      .setTitle("Utilitaire")
       .setDescription(`Les paramètres peuvent être des noms, des mentions, ou des IDs
       Si ce ne sont pas des mentions ils doivent être séparés par \`,,\``)
-      client.commands.filter(cat => cat.help.category === "moderation").map(cmd => moderation.addField(
+      client.commands.filter(cat => cat.help.category === "utilitaire").map(cmd => utilitaire.addField(
         `\`${settings.prefix}${cmd.help.name} ${cmd.help.usage}\``,
         `${cmd.help.description}`
       ))
-    if(value == "moderation") msg.edit({ embeds:[moderation], components: [row]});
-    const modsettings = new MessageEmbed()
+    if(value == "utilitaire") msg.edit({ embeds:[utilitaire], components: [row]});
+    const botconfig = new MessageEmbed()
       .setColor(defaults.dcolor)
-      .setTitle("Modération Settings")
+      .setTitle("Bot Config")
       .setDescription(`Les paramètres peuvent être des noms, des mentions, ou des IDs
       Si ce ne sont pas des mentions ils doivent être séparés par \`,,\``)
-      client.commands.filter(cat => cat.help.category === "modsettings").map(cmd => modsettings.addField(
+      client.commands.filter(cat => cat.help.category === "botconfig").map(cmd => botconfig.addField(
         `\`${settings.prefix}${cmd.help.name} ${cmd.help.usage}\``,
         `${cmd.help.description}`
       ))
-    if(value == "modsettings") msg.edit({ embeds:[modsettings], components: [row]});
-    const logs = new MessageEmbed()
-      .setColor(defaults.dcolor)
-      .setTitle("Logs")
-      .setDescription(`Les paramètres peuvent être des noms, des mentions, ou des IDs
-      Si ce ne sont pas des mentions ils doivent être séparés par \`,,\``)
-      client.commands.filter(cat => cat.help.category === "logs").map(cmd => logs.addField(
-        `\`${settings.prefix}${cmd.help.name} ${cmd.help.usage}\``,
-        `${cmd.help.description}`
-      ))
-    if(value == "logs") msg.edit({ embeds:[logs], components: [row]});
-    const srvconfig = new MessageEmbed()
-      .setColor(defaults.dcolor)
-      .setTitle("Server Config")
-      .setDescription(`Les paramètres peuvent être des noms, des mentions, ou des IDs
-      Si ce ne sont pas des mentions ils doivent être séparés par \`,,\``)
-      client.commands.filter(cat => cat.help.category === "serveurconfig").map(cmd => srvconfig.addField(
-        `\`${settings.prefix}${cmd.help.name} ${cmd.help.usage}\``,
-        `${cmd.help.description}`
-      ))
-    if(value == "srvconfig") msg.edit({ embeds:[srvconfig], components: [row]});
-    const srvgestion = new MessageEmbed()
-      .setColor(defaults.dcolor)
-      .setTitle("Server Gestion")
-      .setDescription(`Les paramètres peuvent être des noms, des mentions, ou des IDs
-      Si ce ne sont pas des mentions ils doivent être séparés par \`,,\``)
-      client.commands.filter(cat => cat.help.category === "servergestion").map(cmd => srvgestion.addField(
-        `\`${settings.prefix}${cmd.help.name} ${cmd.help.usage}\``,
-        `${cmd.help.description}`
-      ))
-    if(value == "servergestion") msg.edit({ embeds:[srvgestion], components: [row]});
-    const antiraid = new MessageEmbed()
-      .setColor(defaults.dcolor)
-      .setTitle("Antiraid")
-      .setDescription(`Les paramètres peuvent être des noms, des mentions, ou des IDs
-      Si ce ne sont pas des mentions ils doivent être séparés par \`,,\``)
-      client.commands.filter(cat => cat.help.category === "antiraid").map(cmd => antiraid.addField(
-        `\`${settings.prefix}${cmd.help.name} ${cmd.help.usage}\``,
-        `${cmd.help.description}`
-      ))
-    if(value == "antiraid") msg.edit({ embeds:[antiraid], components: [row]});
+    if(value == "botconfig") msg.edit({ embeds:[botconfig], components: [row]}); 
     const botcontrol = new MessageEmbed()
       .setColor(defaults.dcolor)
       .setTitle("Bot Control")
@@ -173,23 +93,23 @@ module.exports.run = async (client, message, args) => {
         `${cmd.help.description}`
       ))
     if(value == "botcontrol") msg.edit({ embeds:[botcontrol], components: [row]});
-    const utilitaire = new MessageEmbed()
+    const logs = new MessageEmbed()
       .setColor(defaults.dcolor)
-      .setTitle("Utilitaire")
+      .setTitle("Logs")
       .setDescription(`Les paramètres peuvent être des noms, des mentions, ou des IDs
       Si ce ne sont pas des mentions ils doivent être séparés par \`,,\``)
-      client.commands.filter(cat => cat.help.category === "information").map(cmd => utilitaire.addField(
+      client.commands.filter(cat => cat.help.category === "logs").map(cmd => logs.addField(
         `\`${settings.prefix}${cmd.help.name} ${cmd.help.usage}\``,
         `${cmd.help.description}`
       ))
-    if(value == "utilitaire") msg.edit({ embeds:[utilitaire], components: [row]});
+    if(value == "logs") msg.edit({ embeds:[logs], components: [row]});
   });
 };
 
 module.exports.help = {
   name: "help",
   aliases: [''],
-  category: 'information',
+  category: 'utilitaire',
   description: "Renvoie pong!",
   cooldown: 5,
   usage: '',

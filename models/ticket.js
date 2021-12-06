@@ -8,4 +8,4 @@ const ticketSchema = mongoose.Schema({
   ticketID: String
 });
 
-module.exports = mongoose.model("Guild", ticketSchema);
+module.exports = mongoose.model("Ticket", ticketSchema);

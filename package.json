@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/flashhRDC/Bot-Ticket/issues"
   },
-  "homepage": "https://github.com/flashhRDC/Bot-Ticket#readme"
+  "homepage": "https://github.com/flashhRDC/Bot-Ticket#readme",
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "mongoose": "^6.0.14",
+    "ms": "^2.1.3"
+  }
 }

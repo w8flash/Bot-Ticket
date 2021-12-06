@@ -26,8 +26,8 @@ module.exports.run = (client, message, args) => {
 module.exports.help = {
   name: "bot-info",
   aliases: [''],
-  category: 'information',
-  description: "Permet d'afficher les informations du DaBot.",
+  category: 'utilitaire',
+  description: "Permet d'afficher les informations du Bot.",
   cooldown: 5,
   usage: '',
   args: false

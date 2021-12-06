@@ -1,6 +1,5 @@
 const { Message, MessageEmbed } = require("discord.js");
 const ms = require('ms');
-const schema = require('../../models/member-count')
 module.exports = client => {
 
   const guild = [];
@@ -8,10 +7,9 @@ module.exports = client => {
   guild.forEach(async g => {
     const data = await client.getGuild(g);
     if (!data){
-      client.createGuild({ guildID: g.id })
-      client.createLogs({ guildID: g.id });
+      client.createGuild({guildID: g.id, prefix: "!", ticket: false, modrole: ""})
+      client.createLogs({guildID: g.id, logs: false, logschannel: ""});
     } 
-
   });
 
   let activities = [

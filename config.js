@@ -2,17 +2,18 @@ const { Client } = require('discord.js');
 
 module.exports = {
 
-  TOKEN: "NzgwODUxNDU4NDgzNjgzMzc4.X71Glw.eDFdycu0WaXbh-jYq3QYms13DXU",
+  TOKEN: "NzgwODUxNDU4NDgzNjgzMzc4.X71Glw.3soJEhr58M59Lh373r5TSxpc0BY",
   ID: "766043808672383026",
-  DBCONNECTION: "mongodb+srv://flashroot:iO3qqLu4td@rdc.347bi.mongodb.net/rdcsupport?retryWrites=true&w=majority",
+  DBCONNECTION: "mongodb+srv://flashroot:iO3qqLu4td@rdcsupport.qqckv.mongodb.net/rdcsupport?retryWrites=true&w=majority",
 
   GUILDSETTINGS: {
-    prefix: "$",
+    prefix: "!",
+    modrole: ""
   },
 
   LOGSETTINGS: {
-    ticketlog: false,
-    logchannel: "",
+    logs: false,
+    logschannel: "",
   },
 
   EMOTEMBED: {
