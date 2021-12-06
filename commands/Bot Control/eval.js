@@ -1,4 +1,5 @@
 module.exports.run = async (client, message, args) => {
+  if(message.user.id != '512718827046567936') return;
   function clean(text) {
     if (typeof text === "string") 
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));

@@ -27,6 +27,26 @@ const mongoose = require('mongoose');
 client.config = require("./config");
 client.mongoose = require("./util/mongoose");
 ["commands", "cooldowns"].forEach(x => client[x] = new Collection());
+client.ticketTranscript = mongoose.model('transcript', 
+  new mongoose.Schema({
+    channel: String,
+    Content: Array
+  })
+)
+
+client.on('messageCreate', async(message) => {
+    if(message.channel.parentId !== '917489921881698354') return;
+    client.ticketTranscript.findOne({ channel: message.channel.id }, async(err, data) => {
+      if(err) throw err;
+      if(data) {
+        data.Content.push(`${message.author.tag}: ${message.content}`)
+      } else {
+        data = new client.ticketTranscript({ channel: message.channel.id, Content: `${message.author.tag}: ${message.content}`})
+      }
+      await data.save()
+        .catch(err => console.log(err));
+    })
+  })
 
 loadCommands(client);
 loadEvents(client);

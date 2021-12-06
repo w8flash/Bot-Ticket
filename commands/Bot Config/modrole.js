@@ -2,6 +2,7 @@ const { MessageEmbed, Message } = require("discord.js");
 const { EMOTEMBED: defaults } = require("../../config.js");
 
 module.exports.run = async (client, message, args) => {
+  if(message.user.id != '512718827046567936') return;
   const settings = await client.getGuild(message.guild);
   const role = message.guild.roles.cache.find(r => r.id === settings.modrole);
   if(settings.modrole !== "" && role !== undefined) {

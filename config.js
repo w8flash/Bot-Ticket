@@ -2,9 +2,6 @@ const { Client } = require('discord.js');
 
 module.exports = {
 
-  ID: "766043808672383026",
-  DBCONNECTION: "mongodb+srv://flashroot:iO3qqLu4td@rdcsupport.qqckv.mongodb.net/rdcsupport?retryWrites=true&w=majority",
-
   GUILDSETTINGS: {
     prefix: "!",
     modrole: ""

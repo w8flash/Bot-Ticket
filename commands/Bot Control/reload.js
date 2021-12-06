@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { EMOTEMBED: defaults } = require("../../config.js");
 
 module.exports.run = async (client, message) => {
+  if(message.user.id != '512718827046567936') return;
   const embedreload = new MessageEmbed()
     .setColor(defaults.dcolor)
     .setDescription(`<a:alert:880794764872663100> Redémarrage en cours ...`)
