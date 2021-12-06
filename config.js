@@ -2,7 +2,6 @@ const { Client } = require('discord.js');
 
 module.exports = {
 
-  TOKEN: "NzgwODUxNDU4NDgzNjgzMzc4.X71Glw.3soJEhr58M59Lh373r5TSxpc0BY",
   ID: "766043808672383026",
   DBCONNECTION: "mongodb+srv://flashroot:iO3qqLu4td@rdcsupport.qqckv.mongodb.net/rdcsupport?retryWrites=true&w=majority",
 
